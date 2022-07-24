@@ -1,0 +1,71 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+
+
+// The ground control service definition.
+service GroundControl {
+
+  rpc getMap (mapRequest) returns (mapReply) {}
+
+  rpc getCommands (commandsRequest) returns (commandsReply) {}
+
+  rpc getMineSerialNum (serialNumRequest) returns (serialNumReply) {}
+
+  rpc sharePIN (pinRequest) returns (pinReply) {}
+
+  rpc checkCompleted (checkRequest) returns (checkReply) {}
+}
+
+
+message mapRequest {
+  string number = 1;
+}
+
+message mapReply {
+  //string message = 1;
+  repeated string map = 1;
+  string rowsNum = 2;
+  string colsNum = 3;
+}
+
+message commandsRequest {
+  int32 commandNum = 1;
+}
+
+message commandsReply {
+  string commands = 1;
+}
+
+message serialNumRequest{
+  string roverPosition = 1;
+}
+
+message serialNumReply{
+  string serialNum = 1;
+}
+
+message pinRequest{
+  int32 pin = 1;
+}
+
+message pinReply{
+  string ack = 1;
+}
+
+message checkRequest{
+  string roverStatus = 1;
+}
+
+message checkReply{
+  string ack = 1;
+}
+
+
+
+
